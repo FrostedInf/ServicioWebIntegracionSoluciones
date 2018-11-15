@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css"  href="css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div class="col-md-6">
+            <form method="post" >
+                <div class="form-group">
+                    <label for="region_id">Id:</label>
+                    <input type="text" class="form-control" id="region_id"/>
+                </div>
+                <div class="form-group">
+                    <label for="region_name">Nombre:</label>
+                    <input type="text" id="region_name"/>
+                </div>
+                <div>
+                    <button class="btn btn-primary" type="submit">guardar</button>
+                </div>
+            </form>
+            <div class="col-md-12" style="margin-top:20px">
+            <table  id="tabla_id" class="table table-striped table-bordered" style="width:80%" >
+                <thead>
+                <th>id</th>
+                <th>name</th>
+                </thead>
+            </table>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+         <script type="text/javascript" src="js/bootstrap.min.js"></script>
+         <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+         <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+         <script type="text/javascript" src="js/variables_globales.js"></script>
+         <script type="text/javascript" src="js/main.js"></script>
+    </body>
+    
+</html>
