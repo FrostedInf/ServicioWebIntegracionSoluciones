@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import operaciones_pojo.DeparmentOp;
 import operaciones_pojo.EmployeeOp;
 import operaciones_pojo.RegionsOp;
+import pojos.Regions;
 
 
 /**
@@ -65,7 +66,7 @@ public class GenericResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("getAllRegions")
+    @Path("regions/getAllRegions")
     public String getAllRegions(){
         String regiones;
         RegionsOp regionOp = new RegionsOp();        
@@ -76,9 +77,12 @@ public class GenericResource {
      * PUT method for create new regions
      * @param content representation for the resource
      */
+    @Path("regions/createRegion")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void postRegiones(String content) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public String crearRegiones(Regions region) {
         
+        return "";
     }
 }
