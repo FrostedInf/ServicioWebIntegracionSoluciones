@@ -75,14 +75,17 @@ public class GenericResource {
     }
     /**
      * PUT method for create new regions
-     * @param content representation for the resource
+     * @param region
+     * @return 
      */
     @Path("regions/createRegion")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String crearRegiones(Regions region) {
-        
-        return "";
+    public String createRegion(Regions region) {
+        String respuesta;
+        RegionsOp regionsOp = new RegionsOp();
+        respuesta = regionsOp.crearRegion(region);
+        return respuesta;
     }
 }

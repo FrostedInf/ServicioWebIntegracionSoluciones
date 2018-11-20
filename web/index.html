@@ -6,14 +6,14 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Cliente</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css"  href="css/bootstrap.min.css" />
     </head>
     <body>
-        <div class="col-md-6">
-            <form method="post" >
+        <div class="col-md-4">
+            <form id="target" method="post" >
                 <div class="form-group">
                     <label for="region_id">Id:</label>
                     <input type="text" class="form-control" id="region_id"/>
@@ -23,10 +23,12 @@ and open the template in the editor.
                     <input type="text" id="region_name" class="form-control"/>
                 </div>
                 <div>
-                    <button class="btn btn-primary" type="submit">guardar</button>
+                    <button id="Guardar" class="btn btn-primary" type="submit">Guardar</button>
+                    <button id="Editar" class="btn btn-info" >Editar</button>
+                    <button id="Eliminar" class="btn btn-warning" >Eliminar</button>
                 </div>
-            </form>
-            <div class="col-md-12" style="margin-top:20px">
+            </form>        
+        <div class="col-md-12" style="margin-top:20px">
             <table  id="tabla_id" class="table table-striped table-bordered" style="width:80%" >
                 <thead>
                 <th>id</th>

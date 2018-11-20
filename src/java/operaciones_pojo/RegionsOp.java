@@ -5,15 +5,12 @@
  */
 package operaciones_pojo;
 import com.google.gson.Gson;
-import java.io.IOException;
-import java.io.Reader;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import pojos.Regions;
 import java.util.List;
 import mybatisconfiguration.MyBatisUtil;
+import pojos.mssgRequestAnswers.RegionsList;
+import pojos.mssgRequestAnswers.SucssErrAnswer;
 /**
  *
  * @author kalav
@@ -27,23 +24,29 @@ public class RegionsOp {
       System.out.println("Records Read Successfully ");          
       conn.commit();   
       conn.close();	
-      Dataset data = new Dataset(regiones);
+      RegionsList data = new RegionsList(regiones);
              
       String json = new Gson().toJson(data);
       return json;
     } 
     
     public String crearRegion(Regions region){
+        
         SqlSession conn = MyBatisUtil.getSession();
         try {
             conn.insert("regions.insert", region);
             conn.commit();
-        } catch (Exception e) {
+        } catch (Exception e) {            
             e.printStackTrace();
+            SucssErrAnswer error = new SucssErrAnswer(true,"No se guardo");
+            String json = new Gson().toJson(error);
+            return json;
         }finally{
              conn.close();
         }        
-        return "";
+        SucssErrAnswer answer = new SucssErrAnswer(true,"si se guardo");
+        String json  = new Gson().toJson(answer);
+        return json;
     }
     /*
     public String actualizarRegion(Regions region){
