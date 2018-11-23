@@ -44,7 +44,7 @@ public class RegionsOp {
         }finally{
              conn.close();
         }        
-        SucssErrAnswer answer = new SucssErrAnswer(true,"si se guardo");
+        SucssErrAnswer answer = new SucssErrAnswer(false,"si se guardo");
         String json  = new Gson().toJson(answer);
         return json;
     }

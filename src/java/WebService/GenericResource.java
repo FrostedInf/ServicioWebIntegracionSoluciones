@@ -14,6 +14,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.POST;
 import javax.ws.rs.core.MediaType;
+import operaciones_pojo.CountriesOP;
 import operaciones_pojo.DeparmentOp;
 import operaciones_pojo.EmployeeOp;
 import operaciones_pojo.RegionsOp;
@@ -61,17 +62,19 @@ public class GenericResource {
         empleados = employeeOp.leerTodos();
         return empleados;
     }
+    
     /**
-     * GET method for query all the regions
+     * GET method for query all the counstries
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("regions/getAllRegions")
-    public String getAllRegions(){
-        String regiones;
-        RegionsOp regionOp = new RegionsOp();        
-        regiones = regionOp.leerTodos();        
-        return regiones;
+    @Path("countries/getAllCountries")
+    public String getAllCountries(){
+        String paises;
+        CountriesOP countriesOp = new CountriesOP();        
+        paises = countriesOp.getAllCountries();  
+        System.out.println(paises);
+        return paises;
     }
     /**
      * PUT method for create new regions

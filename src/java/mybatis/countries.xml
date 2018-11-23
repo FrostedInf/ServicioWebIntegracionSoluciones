@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "countries">
+   <select id = "getAll" resultType="pojos.Countries">
+   SELECT 
+       COUNTRIES.COUNTRY_ID, 
+       COUNTRIES.COUNTRY_NAME, 
+       REGIONS.REGION_NAME, 
+       REGIONS.REGION_ID 
+       FROM COUNTRIES INNER JOIN REGIONS ON COUNTRIES.REGION_ID = REGIONS.REGION_ID
+   </select>
+   
+   <insert id = "insert" parameterType = "pojos.Countries">
+      INSERT INTO COUNTRIES COUNTRY_ID,
+       COUNTRY_NAME, 
+       REGION_ID) VALUES (#{country_id}, #{country_name}, #{region_id} )
+   </insert>
+   
+   <select id = "getById" parameterType = "int" resultType = "pojos.Countries">
+      SELECT * FROM COUNTRIES WHERE REGION_ID = #{region_id};
+   </select>
+  	   	
+   <update id = "update" parameterType = "pojos.Countries">
+      UPDATE COUNTRIES SET COUNTRY_NAME = #{region_name}, 
+      WHERE COUNTRY_ID = #{region_id};
+   </update>
+    	
+</mapper>

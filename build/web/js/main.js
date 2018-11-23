@@ -1,8 +1,8 @@
-    servicio = "/regions/getAllRegions";
+    servicio = "/countries/getAllCountries";
     var ruta_completa = host + ruta_ws + servicio;
     $('document').ready(function(){
-          let tabla;
-          tabla = $("#tabla_id").DataTable({
+          
+          const tabla = $("#tabla_id").DataTable({
               "ajax":{
                   "dataType": 'json',
                   "contentType": "application/json; charset=utf-8",
@@ -12,15 +12,17 @@
                   "url": ruta_completa,
               },
               "columns":[
-                  {"data" : "region_id" },
-                  {"data" : "region_name" }
+                  {"data" : "country_id" },
+                  {"data" : "country_name" },
+                  {"data" : "region_name"}
               ]
 
           });
           
           $('#tabla_id tbody').on('click', 'tr', function () {
             var data = tabla.row( this ).data();
-            $("#region_id").val(data.region_id);
+            $("#country_id").val(data.country_id);
+            $("#country_name").val(data.country_name);
             $("#region_name").val(data.region_name);
             saveRegion(id,name);
           } );
