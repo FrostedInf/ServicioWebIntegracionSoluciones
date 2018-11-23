@@ -10,17 +10,17 @@ package pojos;
  * @author kalav
  */
 public class Countries {
-    String country_id;
-    String country_name;
-    int region_id;
-    String region_name;
+    private String country_id;
+    private String country_name;
+    private int region_id;
+    private String region_name;
 
     public Countries() {
     }
 
-    public Countries(String Country_id, String Country_name, int region_id, String region_name) {
-        this.country_id = Country_id;
-        this.country_name = Country_name;
+    public Countries(String country_id, String country_name, int region_id, String region_name) {
+        this.country_id = country_id;
+        this.country_name = country_name;
         this.region_id = region_id;
         this.region_name = region_name;
     }
@@ -29,7 +29,7 @@ public class Countries {
         return country_id;
     }
 
-    public void setCountry_id(String Country_id) {
+    public void setCountry_id(String country_id) {
         this.country_id = country_id;
     }
 
@@ -37,7 +37,7 @@ public class Countries {
         return country_name;
     }
 
-    public void setCountry_name(String Country_name) {
+    public void setCountry_name(String country_name) {
         this.country_name = country_name;
     }
 

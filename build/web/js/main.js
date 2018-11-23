@@ -23,8 +23,7 @@
             var data = tabla.row( this ).data();
             $("#country_id").val(data.country_id);
             $("#country_name").val(data.country_name);
-            $("#region_name").val(data.region_name);
-            saveRegion(id,name);
+            $("#region_name").val(data.region_name);            
           } );
           
           setInterval( function () {
@@ -38,13 +37,23 @@
         });
         $("#Guardar").on('click', function(){
             $.ajax({
-                method:"POST",
-                url: "",
+                dataType: 'json',
+                method:'POST',
+                contentType: 'application/json',
+                url: host + ruta_ws + 'countries/createCounty',
                 data:{  
-                        region_id : $("#region_id").val(), 
-                        region_name : $("#region_id").val() 
-                    }
-            });
+                        region_id : $("#country_id").val(), 
+                        country_name : $("#country_name").val(),
+                        region_name : $("#region_name").val()
+                    },
+                
+            })
+                .done(function(msg){
+                    alert(msg);
+                })
+                .fail(function (msg){
+                    alert(msg);
+                })
         });
         
     

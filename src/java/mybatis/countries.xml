@@ -3,12 +3,7 @@
 
 <mapper namespace = "countries">
    <select id = "getAll" resultType="pojos.Countries">
-   SELECT 
-       COUNTRIES.COUNTRY_ID, 
-       COUNTRIES.COUNTRY_NAME, 
-       REGIONS.REGION_NAME, 
-       REGIONS.REGION_ID 
-       FROM COUNTRIES INNER JOIN REGIONS ON COUNTRIES.REGION_ID = REGIONS.REGION_ID
+   SELECT COUNTRIES.COUNTRY_ID, COUNTRIES.COUNTRY_NAME, REGIONS.REGION_NAME, REGIONS.REGION_ID FROM (COUNTRIES INNER JOIN REGIONS ON COUNTRIES.REGION_ID = REGIONS.REGION_ID)
    </select>
    
    <insert id = "insert" parameterType = "pojos.Countries">

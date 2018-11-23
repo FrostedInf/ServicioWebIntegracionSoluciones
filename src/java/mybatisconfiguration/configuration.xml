@@ -16,9 +16,7 @@
       </environment>
    </environments>
 	
-   <mappers>
-      <mapper resource = "mybatis/departments.xml"/>
-      <mapper resource = "mybatis/employees.xml"/>
+   <mappers>      
       <mapper resource = "mybatis/regions.xml"/>
       <mapper resource = "mybatis/countries.xml"/>
    </mappers>
