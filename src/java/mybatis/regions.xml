@@ -7,18 +7,9 @@
    SELECT * FROM REGIONS
    </select>
    
-   <insert id = "insert" parameterType = "pojos.Regions">
-      INSERT INTO REGIONS (REGION_ID, REGION_NAME) VALUES (#{region_id}, #{region_name})
-   </insert>
-   
-   <select id = "getById" parameterType = "int" resultType = "pojos.Regions">
-      SELECT * FROM REGIONS WHERE REGION_ID = #{region_id};
+   <select id = "getByName" parameterType = "String" resultType = "pojos.Regions">
+      SELECT * FROM REGIONS WHERE REGION_NAME = #{region_name}
    </select>
-  	
-     	
-   <update id = "update" parameterType = "pojos.Regions">
-      UPDATE REGIONS SET REGION_NAME = #{region_name}, 
-      WHERE REGION_ID = #{region_id};
-   </update>
+  	     	
     	
 </mapper> 

@@ -9,9 +9,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import operaciones_pojo.CountriesOP;
 import operaciones_pojo.RegionsOp;
@@ -33,7 +35,16 @@ public class GenericResource {
      * Creates a new instance of GenericResource
      */
     public GenericResource() {
-    }    
+    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("regions/getAllRegions")
+    public String getAllRegions(){
+        String regiones;
+        RegionsOp regionsOp = new RegionsOp();        
+        regiones = regionsOp.leerTodos();          
+        return regiones;
+    }
     /**
      * GET method for query all the counstries
      */
@@ -48,11 +59,11 @@ public class GenericResource {
         return paises;
     }
     /**
-     * PUT method for create new regions
-     * @param country
+     * POST method for create new regions
+     * @param countries
      * @return 
      */
-    @Path("regions/createRegion")
+    @Path("countries/createCountries")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -62,4 +73,36 @@ public class GenericResource {
         respuesta = countriesOP.crearCountry(countries);
         return respuesta;
     }
+    /**
+     * PUT method for delete new regions
+     * @param countries
+     * @return 
+     */    
+    @Path("countries/deleteCountries")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)    
+    public String deleteCountry(Countries countries){
+        String respuesta;
+        CountriesOP countriesOP = new CountriesOP();
+        respuesta = countriesOP.deleteCountry(countries.getCountry_id());
+        return respuesta;
+    }
+    
+    /**
+     * PUT method for update countries
+     * @param countries
+     * @return 
+     */
+    @Path("countries/updateCountries")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateCountry(Countries countries) {
+        String respuesta;
+        CountriesOP countriesOP = new CountriesOP();
+        respuesta = countriesOP.updateCountry(countries);
+        return respuesta;
+    }
+  
 }

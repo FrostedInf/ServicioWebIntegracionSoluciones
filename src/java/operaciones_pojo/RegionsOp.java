@@ -20,63 +20,23 @@ public class RegionsOp {
       //Hace todo el proceso de conexion a bda y el uso de archivos de configuracion  
       SqlSession conn = MyBatisUtil.getSession();
       //select contact all contacts		  
-      List<Regions> regiones = conn.selectList("regions.getAll");
-      System.out.println("Records Read Successfully ");          
+      List<Regions> regiones = conn.selectList("regions.getAll");      
       conn.commit();   
       conn.close();	
-      RegionsList data = new RegionsList(regiones);
-             
+      RegionsList data = new RegionsList(regiones);             
       String json = new Gson().toJson(data);
       return json;
     } 
     
-    public String crearRegion(Regions region){
-        
-        SqlSession conn = MyBatisUtil.getSession();
-        try {
-            conn.insert("regions.insert", region);
-            conn.commit();
-        } catch (Exception e) {            
-            e.printStackTrace();
-            SucssErrAnswer error = new SucssErrAnswer(true,"No se guardo");
-            String json = new Gson().toJson(error);
-            return json;
-        }finally{
-             conn.close();
-        }        
-        SucssErrAnswer answer = new SucssErrAnswer(false,"si se guardo");
-        String json  = new Gson().toJson(answer);
-        return json;
+    public Regions getObjbyName(String name){
+      //Hace todo el proceso de conexion a bda y el uso de archivos de configuracion  
+      SqlSession conn = MyBatisUtil.getSession();
+      //select contact all contacts		  
+      Regions region = conn.selectOne("regions.getByName", name);      
+      System.out.println("Records Read Successfully get by name ");          
+      System.out.println(region.getRegion_name());                
+      conn.commit();   
+      conn.close();	      
+      return region;
     }
-    /*
-    public String actualizarRegion(Regions region){
-        SqlSession conn = MyBatisUtil.getSession();
-        try {
-            conn.insert("regions.update", region);
-            conn.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally{
-             conn.close();
-        }  
-        return "";
-    }
-    /*
-    /*
-    public String eliminarRegion(int id){
-        SqlSession conn = MyBatisUtil.getSession();
-        try {
-            conn.delete("regions.delete", id);
-            conn.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally{
-             conn.close();
-        }
-        
-        return "";
-    }
-    */
-    
-    
 }

@@ -7,9 +7,10 @@
             <file>file:/C:/Users/kalav/Documents/NetBeansProjects/ServicioWebIntegracionSoluciones/web/index.html</file>
             <file>file:/C:/Users/kalav/Documents/NetBeansProjects/ServicioWebIntegracionSoluciones/src/java/mybatis/countries.xml</file>
             <file>file:/C:/Users/kalav/Documents/NetBeansProjects/ServicioWebIntegracionSoluciones/src/java/pojos/Countries.java</file>
-            <file>file:/C:/Users/kalav/Documents/NetBeansProjects/ServicioWebIntegracionSoluciones/src/java/WebService/GenericResource.java</file>
+            <file>file:/C:/Users/kalav/Documents/NetBeansProjects/ServicioWebIntegracionSoluciones/src/java/mybatis/regions.xml</file>
             <file>file:/C:/Users/kalav/Documents/NetBeansProjects/ServicioWebIntegracionSoluciones/src/java/operaciones_pojo/CountriesOP.java</file>
-            <file>file:/C:/Users/kalav/Documents/NetBeansProjects/ServicioWebIntegracionSoluciones/src/java/pojos/mssgRequestAnswers/CountriesList.java</file>
+            <file>file:/C:/Users/kalav/Documents/NetBeansProjects/ServicioWebIntegracionSoluciones/src/java/WebService/GenericResource.java</file>
+            <file>file:/C:/Users/kalav/Documents/NetBeansProjects/ServicioWebIntegracionSoluciones/src/java/operaciones_pojo/RegionsOp.java</file>
         </group>
     </open-files>
 </project-private>

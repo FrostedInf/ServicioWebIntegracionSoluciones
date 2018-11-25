@@ -5,7 +5,7 @@
  */
 const host = "http://localhost:9090/";
 const ruta_ws = "ServicioWebIntegracionSoluciones/webresources/generic";
-var servicio;
+
 
 
 

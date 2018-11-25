@@ -7,18 +7,21 @@
    </select>
    
    <insert id = "insert" parameterType = "pojos.Countries">
-      INSERT INTO COUNTRIES COUNTRY_ID,
-       COUNTRY_NAME, 
-       REGION_ID) VALUES (#{country_id}, #{country_name}, #{region_id} )
+      INSERT INTO COUNTRIES (COUNTRY_ID,COUNTRY_NAME, REGION_ID) VALUES (#{country_id}, #{country_name}, #{region_id} )
    </insert>
    
    <select id = "getById" parameterType = "int" resultType = "pojos.Countries">
-      SELECT * FROM COUNTRIES WHERE REGION_ID = #{region_id};
+      SELECT * FROM COUNTRIES WHERE REGION_ID = #{region_id}
    </select>
   	   	
    <update id = "update" parameterType = "pojos.Countries">
-      UPDATE COUNTRIES SET COUNTRY_NAME = #{region_name}, 
-      WHERE COUNTRY_ID = #{region_id};
+      UPDATE COUNTRIES SET COUNTRY_NAME = #{country_name},
+      REGION_ID = #{region_id}
+      WHERE COUNTRY_ID = #{country_id}
    </update>
+   
+      <delete id = "deleteById" parameterType = "String">
+      DELETE from COUNTRIES WHERE COUNTRY_ID = #{country_id}
+   </delete>
     	
 </mapper>

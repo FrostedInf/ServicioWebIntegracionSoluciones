@@ -10,6 +10,7 @@ import java.util.List;
 import mybatisconfiguration.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import pojos.Countries;
+import pojos.Regions;
 import pojos.mssgRequestAnswers.CountriesList;
 import pojos.mssgRequestAnswers.SucssErrAnswer;
 
@@ -19,10 +20,8 @@ import pojos.mssgRequestAnswers.SucssErrAnswer;
  */
 public class CountriesOP {
     
-    public String getAllCountries(){
-      //Hace todo el proceso de conexion a bda y el uso de archivos de configuracion  
-      SqlSession conn = MyBatisUtil.getSession();
-      //select contact all contacts		  
+    public String getAllCountries(){      
+      SqlSession conn = MyBatisUtil.getSession();       
       List<Countries> countries = conn.selectList("countries.getAll");
       System.out.println("Records Read Successfully ");          
       conn.commit();   
@@ -32,12 +31,22 @@ public class CountriesOP {
       return json;
     } 
     
-    public String crearCountry(Countries region){
-        
+    public String crearCountry(Countries countries){
+        Regions region = new Regions();
+        RegionsOp regionsOp = new RegionsOp();
+        region = regionsOp.getObjbyName(countries.getRegion_name());
         SqlSession conn = MyBatisUtil.getSession();
         try {
-            conn.insert("countries.insert", region);
-            conn.commit();
+            if(region!= null){
+                countries.setRegion_id(region.getRegion_id());
+                conn.insert("countries.insert", countries);
+                conn.commit();
+            }else{
+            SucssErrAnswer error = new SucssErrAnswer(true,"No existe la region");
+            String json = new Gson().toJson(error);
+            return json;
+            } 
+            
         } catch (Exception e) {            
             e.printStackTrace();
             SucssErrAnswer error = new SucssErrAnswer(true,"No se guardo");
@@ -51,4 +60,57 @@ public class CountriesOP {
         return json;
     }
     
+    public String deleteCountry(String id){
+    SqlSession conn = MyBatisUtil.getSession();       
+        try {           
+            if (id == null || id == "") {
+                SucssErrAnswer answer = new SucssErrAnswer(true,"identificador no valido");
+                String json  = new Gson().toJson(answer);
+                return json;
+            }
+            conn.delete("countries.deleteById",id);
+            conn.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            SucssErrAnswer answer = new SucssErrAnswer(true,"pais no eliminado");
+            String json  = new Gson().toJson(answer);
+            return json;
+        }finally {
+            conn.close();
+        }
+        
+        SucssErrAnswer answer = new SucssErrAnswer(false,"pais eliminado");
+        String json  = new Gson().toJson(answer);
+    
+    return json;
+    }
+    
+    public String updateCountry(Countries countries){
+        Regions region = new Regions();
+        RegionsOp regionsOp = new RegionsOp();
+        region = regionsOp.getObjbyName(countries.getRegion_name());
+        SqlSession conn = MyBatisUtil.getSession();
+        try {
+            if(region!= null){
+                countries.setRegion_id(region.getRegion_id());
+                conn.update("countries.update", countries);
+                conn.commit();
+            }else{
+            SucssErrAnswer error = new SucssErrAnswer(true,"No existe la region");
+            String json = new Gson().toJson(error);
+            return json;
+            } 
+            
+        } catch (Exception e) {            
+            e.printStackTrace();
+            SucssErrAnswer error = new SucssErrAnswer(true,"No se actualizo el elemento");
+            String json = new Gson().toJson(error);
+            return json;
+        }finally{
+             conn.close();
+        }        
+        SucssErrAnswer answer = new SucssErrAnswer(false,"se actualizo el elemento" + countries.getCountry_name());
+        String json  = new Gson().toJson(answer);
+        return json;
+    }
 }
